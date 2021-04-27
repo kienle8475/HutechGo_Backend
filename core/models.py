@@ -33,6 +33,9 @@ class University(models.Model):
     uni_id = models.CharField(max_length=8, primary_key=True)
     uni_name = models.CharField(max_length= 100)
     uni_city = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return str(self.uni_name)
 
 class Campus(models.Model):
     campus_id = models.CharField(max_length=1, primary_key=True)
@@ -41,6 +44,9 @@ class Campus(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     university = models.ForeignKey(University, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return str(self.campus_name)
 
 class Vehicle(models.Model):
     vehicle_id = models.CharField(max_length=8, primary_key=True)
